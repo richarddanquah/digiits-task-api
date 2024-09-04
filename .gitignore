@@ -1,0 +1,13 @@
+
+#Dependency directories
+node_modules
+#dotenv environment virables
+.env
+
+#build files
+dist/
+
+Dockerfile
+docker-compose.yml
+
+.dockerignore
