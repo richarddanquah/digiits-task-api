@@ -1,0 +1,17 @@
+{
+  "name": "digiits-task-api",
+  "version": "1.0.0",
+  "description": "RESTful API for a simple task management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "digiits",
+    "task",
+    "api",
+    "management"
+  ],
+  "author": "Richard Danquah",
+  "license": "ISC"
+}
