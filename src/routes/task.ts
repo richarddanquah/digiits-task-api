@@ -46,7 +46,7 @@ const router = express.Router();
  *           format: date-time
  *           description: When the task was last updated
  * 
- * /api/v1/tasks:
+ * /user/tasks:
  *   post:
  *     summary: Create a new task
  *     tags: [Tasks]
@@ -105,7 +105,7 @@ const router = express.Router();
  *       401:
  *         description: Unauthorized, user is not authenticated
  *
- * /api/v1/tasks/{id}:
+ * /user/tasks/{id}:
  *   get:
  *     summary: Get a specific task by ID
  *     tags: [Tasks]

@@ -39,7 +39,7 @@ const router = express.Router();
  *           format: date-time
  *           description: When the user was last updated
  * 
- * /api/v1/admin/users:
+ * /admin/users:
  *   get:
  *     summary: Get all users (Admin)
  *     tags: [Admin Users]

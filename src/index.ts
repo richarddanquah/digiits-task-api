@@ -20,24 +20,42 @@ const options = {
       version: '1.0.0',
       description: 'NodeJS API Documentation for Digiits Task Management System',
       contact: {
-        name: 'Digiits Team',
+        name: 'Digiits Team(Richard Danquah)',
         email: 'digiits.team@gmail.com',
         url: 'https://digiits.com',
       },
     },
     servers: [
       {
-        url: 'http://localhost:6000/api/v1',
+        url: 'http://localhost:6500/api/v1',
         description: 'Development server',
       },
+    ],
+    components: {
+        securitySchemes: {
+            BearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+            },
+        },
+    },
+    security: [
+        {
+            BearerAuth: [],
+        },
     ],
   },
   apis: ['./dist/routes/*.js']
 };
 
+
+
 const specs = swaggerJSDoc(options);
 
 const app: Express = express();
+
+
 
 app.use('/apidocswag', swaggerUI.serve, swaggerUI.setup(specs));
 
@@ -45,14 +63,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', taskRoutes);
 app.use('/api/v1/admin', adminTaskRoutes);
 app.use('/api/v1/admin/users', adminUserRoutes);
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 6500;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log('API docs available at http://localhost:6000/apidocswag');
+  console.log('API docs available at http://localhost:6500/apidocswag');
 });
