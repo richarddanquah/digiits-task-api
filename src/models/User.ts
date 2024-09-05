@@ -12,8 +12,12 @@ export interface User {
   // create user
   export async function createUser(user: User): Promise<User> {
     const hashedPassword = await bcrypt.hash(user.password, 10);
+
+    // Set a default role if none is provided
+    const role = user.role || 'user';
+
     const [newUser] = await knex('users')
-      .insert({ ...user, password: hashedPassword })
+      .insert({ ...user, password: hashedPassword, role })
       .returning(['id', 'username', 'email', 'role', 'created_at', 'updated_at']);
     return newUser;
   }

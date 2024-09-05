@@ -6,6 +6,12 @@ import jwt from 'jsonwebtoken';
 export const register = async (req: Request, res: Response) => {
   try {
     const { username, email, password } = req.body;
+
+      // Validate the request body
+      if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Username, email, and password are required' });
+      }
+
     const existingUser = await findUserByEmail(email);
 
     if (existingUser) {
