@@ -19,6 +19,8 @@ export function authMiddleware(req: AuthenticatedRequest, res: Response, next: N
     const decoded = jwt.verify(token, process.env.JWT_SECRET!);
     req.userId = (decoded as any).userId;
     req.role = (decoded as any).role;
+    // console.log(req.userId)
+    // console.log(req.role)
     next();
   } catch (err) {
     return res.status(401).json({ message: 'Invalid token' });

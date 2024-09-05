@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import authRoutes from './routes/auth';
+import taskRoutes from './routes/task';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(urlencoded_body_parser);
 app.use(express.json());
 
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/task', taskRoutes);
 
 const PORT = process.env.PORT;
 
