@@ -5,6 +5,7 @@ import cors from 'cors';
 import authRoutes from './routes/auth';
 import taskRoutes from './routes/task';
 import adminTaskRoutes from './routes/admin.task';
+import adminUserRoutes from './routes/admin.user';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', taskRoutes);
 app.use('/api/v1/admin', adminTaskRoutes);
+app.use('/api/v1/admin/users',adminUserRoutes)
 
 const PORT = process.env.PORT;
 
