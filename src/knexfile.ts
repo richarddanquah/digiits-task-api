@@ -1,5 +1,6 @@
 import type { Knex } from 'knex';
 import { config as dotenvConfig } from 'dotenv';
+import path from 'path';
 
 dotenvConfig();
 
@@ -13,11 +14,11 @@ const config: { [key: string]: Knex.Config } = {
       database: process.env.DB_NAME,
     },
     migrations: {
-      directory: './src/db/migrations',
+      directory: path.join(__dirname, 'src/db/migrations/'),
       extension: 'ts', // Ensure TypeScript files are recognized
     },
     seeds: {
-      directory: './src/db/seeds',
+        directory: path.join(__dirname, 'src/db/seeds'),
     },
   },
 
@@ -25,11 +26,11 @@ const config: { [key: string]: Knex.Config } = {
     client: 'pg',
     connection: process.env.DATABASE_URL,
     migrations: {
-      directory: './src/db/migrations',
+        directory: path.join(__dirname, 'src/db/migrations'),
       extension: 'ts',
     },
     seeds: {
-      directory: './src/db/seeds',
+        directory: path.join(__dirname, 'src/db/seeds'),
     },
   },
 };
